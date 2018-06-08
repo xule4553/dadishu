@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>无标题文档</title>
+<title></title>
 <style>
     h1{
 		text-align:center;
@@ -19,6 +19,27 @@
 	   background-color:green;
    }
 </style>
+<script>
+    var imgs;
+    window.onload = function(){
+           imgs = document.images;
+           mouse_show();
+       }
+    function mouse_show(){
+                var i = parseInt(Math.random()*imgs.length);
+                imgs[i].src = "../imgs/01.jpg";
+                setTimeout("mouse_show()",1000);
+                setTimeout("mouse_hide("+i+")",1000);
+            }
+
+    function mouse_hide(i){
+
+                var name = imgs[i].src.substr(imgs[i].src.length-5,1);
+                if(name == 1){
+                    imgs[i].src = "../imgs/00.png";
+                }
+            }
+</script>
 </head>
 
 <body>
