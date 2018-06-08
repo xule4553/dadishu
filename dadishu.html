@@ -6,7 +6,7 @@
 <style>
     h1{
 		text-align:center;
-		font-size:50px;
+		font-size:30px;
 		}
 	.div1 {
 	  position: absolute;
@@ -27,7 +27,7 @@
        }
     function mouse_show(){
                 var i = parseInt(Math.random()*imgs.length);
-                imgs[i].src = "../imgs/01.jpg";
+                imgs[i].src = "../imgs/01.png";
                 setTimeout("mouse_show()",1000);
                 setTimeout("mouse_hide("+i+")",1000);
             }
@@ -39,6 +39,16 @@
                     imgs[i].src = "../imgs/00.png";
                 }
             }
+    function play(obj){
+                var name = obj.src.substr(obj.src.length-5,1);
+                if(name == 1){
+                    obj.src = "../imgs/02.png";
+                    play_id = setTimeout(function(){
+                        obj.src = "../imgs/00.png";
+                    },500);
+                }
+            }
+
 </script>
 </head>
 
