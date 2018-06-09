@@ -21,15 +21,29 @@
 </style>
 <script>
     var imgs;
+	var start=0;
     window.onload = function(){
            imgs = document.images;
-           mouse_show();
+		   ksBtn.onclick=function(){
+			   if(start!=1){
+			       start=1;
+                   mouse_show();
+			   }
+		   }
+		   tzBtn.onclick=function(){
+			   if(start==1){
+				   start=0;
+		           game_over();
+			   }
+		   }
        }
     function mouse_show(){
+		if(start==1){
                 var i = parseInt(Math.random()*imgs.length);
                 imgs[i].src = "../imgs/01.png";
                 setTimeout("mouse_show()",1000);
                 setTimeout("mouse_hide("+i+")",1000);
+		}
             }
 
     function mouse_hide(i){
@@ -48,13 +62,19 @@
                     },500);
                 }
             }
-
+    function game_over(){
+		         for (var i=0;i<imgs.length;i++) {
+                    imgs[i].src = "../imgs/00.png";
+                }
+	}
 </script>
 </head>
 
 <body>
-  <h1>欢乐打地鼠</h1>
-<div id="game_div" class="div1">
+         <h1>欢乐打地鼠</h1>
+         <button id="ksBtn">开始游戏</button>
+         <button id="tzBtn">停止游戏</button>
+<div class="div1">
         <table border=" ">
             <tr>
                 <td><img src="../imgs/00.png" onclick="play(this)" /></td>
